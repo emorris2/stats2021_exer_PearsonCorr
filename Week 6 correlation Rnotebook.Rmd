@@ -4,14 +4,28 @@ output:
   md_document:
     variant: markdown_github
 ---
-
+```{r}
+dataset = rio::import("Exam Anxiety.sav")
+data = dataset
+```
 #  Correlation
 
 ## Create a scatterplot matrix
 
-I couldn't see how to create a scatterplot matrix in Jamovi right away so I found some R functions. The code is below.
+```{r}
+jmv::corrMatrix(
+  data = dataset,
+  vars = vars(Code, Revise, Anxiety, Exam),
+  flag = TRUE,
+  n = TRUE,
+  ci = TRUE,
+  plots = TRUE,
+  plotDens = TRUE,
+  plotStats = TRUE)
+```
 
 ```{r}
+
 # The pairs and plots functions are part of baseR
 
 # pairs using column numbers
